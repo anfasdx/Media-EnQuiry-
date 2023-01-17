@@ -1,46 +1,850 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>Media Query</title>
+  <meta charset="UTF-8">
+  <title>Study Materials</title>
+</head>
+
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
   <style>
-    /* Media Query for Mobile Devices */
-    @media (max-width: 480px) {
-      body {
-        background-color: red;
+    * {
+      box-sizing: border-box;
+    }
+
+    #myInput {
+      background-image: url('/css/searchicon.png');
+      background-position: 10px 12px;
+      background-repeat: no-repeat;
+      width: 100%;
+      font-size: 16px;
+      padding: 12px 20px 12px 40px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+    }
+
+    #myUL {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #myUL li a {
+      border: none;
+      margin-top: 1px;
+      /* Prevent double borders */
+      background-color: none;
+      padding: none;
+      text-decoration: none;
+      font-size: 15px;
+      color: black;
+      display: block
+    }
+
+    #myUL li a:hover:not(.header) {
+      background-color: none;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <style>
+    .panel-title {
+      color: #FFFFFF;
+    }
+
+    .panel-body {
+      color: #000000;
+    }
+
+    .panel-default>.panel-heading {
+      color: #333;
+      border-radius: 4px;
+      background-color: #D7BE69;
+    }
+
+    .panel-group .panel-heading+.panel-collapse>.list-group,
+    .panel-group .panel-heading+.panel-collapse>.panel-body {
+      border-top: 0px solid #261616;
+    }
+
+
+    .panel-warning {
+      margin-bottom: 20px;
+      border-top: 0;
+      border: 1px solid #FFE1AC00;
+      border-radius: 4px;
+
+    }
+
+    .panel-success>.panel-heading {
+      color: #24FF28;
+      background-color: #DFF0D800;
+      margin-bottom: 20px;
+      border: 1px solid #26FF2A;
+      border-radius: 4px;
+
+    }
+
+    .panel-danger>.panel-heading {
+      color: #E22B29;
+      background-color: #F2DEDE00;
+      margin-bottom: 20px;
+      border-radius: 4px;
+
+    }
+
+
+    .panel-warning>.panel-heading {
+      color: #FFBF4E;
+      background-color: #FEDD9900;
+      margin-bottom: 20px;
+      border: 1px solid #FFC55F;
+      border-radius: 4px;
+
+    }
+
+    .panel-info>.panel-heading {
+      color: #15B2FF;
+      background-color: #D9EDF700;
+      margin-bottom: 20px;
+      border: 1px solid #10B0FF;
+      border-radius: 4px;
+
+    }
+
+
+
+
+
+
+    a,
+    a:hover,
+    a:active,
+    a:visited,
+    a:focus {
+      text-decoration: none;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    .button.dark-single {
+      --background: none;
+      --rectangle: #242836;
+      --success: #4BC793;
+    }
+
+    .button.white-single {
+      --background: none;
+      --rectangle: #F5F9FF;
+      --arrow: #275efe;
+      --success: #275efe;
+      --shadow: rgba(10, 22, 50, 0.1);
+    }
+
+    .button.dark {
+      --background: #242836BD;
+      --rectangle: #1C212E;
+      --arrow: #F5F9FF;
+      --text: #F5F9FF;
+      --success: #D7BE69A6;
+    }
+
+    .button {
+      --background: #275EFE;
+      --rectangle: #184FEE;
+      --success: #4672F1;
+      --text: #fff;
+      --arrow: #fff;
+      --checkmark: #fff;
+      --shadow: rgba(10, 22, 50, 0.24);
+
+      display: flex;
+      overflow: hidden;
+      text-decoration: none;
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      background: var(--background);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px -1px var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:active {
+      transform: scale(0.95);
+      box-shadow: 0 1px 4px -1px var(--shadow);
+    }
+
+    .button ul {
+      margin: 0;
+      padding: 16px 40px;
+      list-style: none;
+      text-align: center;
+      position: relative;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 28px;
+      color: var(--text);
+    }
+
+    .button ul li:not(:first-child) {
+      top: 16px;
+      left: 0;
+      right: 0;
+      position: absolute;
+    }
+
+    .button ul li:nth-child(2) {
+      top: 76px;
+    }
+
+    .button ul li:nth-child(3) {
+      top: 136px;
+    }
+
+    .button>div {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      background: var(--rectangle);
+    }
+
+    .button>div:before,
+    .button>div:after {
+      content: "";
+      display: block;
+      position: absolute;
+    }
+
+    .button>div:before {
+      border-radius: 1px;
+      width: 2px;
+      top: 50%;
+      left: 50%;
+      height: 17px;
+      margin: -9px 0 0 -1px;
+      background: var(--arrow);
+    }
+
+    .button>div:after {
+      width: 60px;
+      height: 60px;
+      transform-origin: 50% 0;
+      border-radius: 0 0 80% 80%;
+      background: var(--success);
+      top: 0;
+      left: 0;
+      transform: scaleY(0);
+    }
+
+    .button>div svg {
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: 50%;
+      top: 50%;
+      margin: -9px 0 0 -10px;
+      fill: none;
+      z-index: 1;
+      stroke-width: 2px;
+      stroke: var(--arrow);
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .button.loading ul {
+      -webkit-animation: text calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
+      animation: text calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
+    }
+
+    .button.loading>div:before {
+      -webkit-animation: line calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
+      animation: line calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
+    }
+
+    .button.loading>div:after {
+      -webkit-animation: background calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
+      animation: background calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
+    }
+
+    .button.loading>div svg {
+      -webkit-animation: svg calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
+      animation: svg calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
+    }
+
+    @-webkit-keyframes text {
+
+      10%,
+      85% {
+        transform: translateY(-100%);
+      }
+
+      95%,
+      100% {
+        transform: translateY(-200%);
       }
     }
-    /* Media Query for low resolution  Tablets, Ipads */
-    @media (min-width: 481px) and (max-width: 767px) {
-      body {
-        background-color: yellow;
+
+    @keyframes text {
+
+      10%,
+      85% {
+        transform: translateY(-100%);
+      }
+
+      95%,
+      100% {
+        transform: translateY(-200%);
       }
     }
-    /* Media Query for Tablets Ipads portrait mode */
-    @media (min-width: 768px) and (max-width: 1024px) {
-      body {
-        background-color: blue;
+
+    @keyframes line {
+
+      100%,
+      0% {
+        opacity: 0;
+        transform: translateY(0px);
+      }
+
+      5%,
+      20% {
+        stroke-dasharray: 0;
+        stroke-dashoffset: 0;
+        opacity: 1;
+        stroke-width: 3px;
+        stroke: var(--checkmark);
+      }
+
+      30% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      75% {
+        opacity: 0;
+        transform: translateY(0px);
       }
     }
-    /* Media Query for Laptops and Desktops */
-    @media (min-width: 1025px) and (max-width: 1280px) {
-      body {
-        background-color: green;
+
+    @keyframes svg {
+
+      0%,
+      20% {
+        stroke-dasharray: 0;
+        stroke-dashoffset: 0;
+      }
+
+
+
+      30% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      75% {
+        opacity: 0;
+        transform: translateY(0px);
+      }
+
+      89% {
+        stroke-dasharray: 26px;
+        stroke-dashoffset: 26px;
+        stroke-width: 3px;
+        margin: -10px 0 0 -10px;
+        stroke: var(--checkmark);
+      }
+
+      100% {
+        stroke-dasharray: 26px;
+        stroke-dashoffset: 0;
+        margin: -10px 0 0 -10px;
+        stroke: var(--checkmark);
+      }
+
+      100%,
+      0% {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+
+    }
+
+    @-webkit-keyframes background {
+      10% {
+        transform: scaleY(0);
+      }
+
+      40% {
+        transform: scaleY(0.15);
+      }
+
+      65% {
+        transform: scaleY(0.5);
+        border-radius: 0 0 50% 50%;
+      }
+
+      75% {
+        border-radius: 0 0 50% 50%;
+      }
+
+      90%,
+      100% {
+        border-radius: 0;
+      }
+
+      75%,
+      100% {
+        transform: scaleY(1);
       }
     }
-    /* Media Query for Large screens */
-    @media (min-width: 1281px) {
-      body {
-        background-color: white;
+
+    @keyframes background {
+      10% {
+        transform: scaleY(0);
+      }
+
+      40% {
+        transform: scaleY(0.15);
+      }
+
+      65% {
+        transform: scaleY(0.5);
+        border-radius: 0 0 50% 50%;
+      }
+
+      75% {
+        border-radius: 0 0 50% 50%;
+      }
+
+      90%,
+      100% {
+        border-radius: 0;
+      }
+
+      75%,
+      100% {
+        transform: scaleY(1);
+      }
+    }
+
+
+
+    .bun {
+      font-family: "Roboto", Arial;
+    }
+
+    .bun {
+      display: flex;
+      width: 100%;
+    }
+
+    body .container .button {
+      margin: 16px;
+    }
+
+    @media (max-width: 400px) {
+      body .container .button {
+        margin: 12px;
       }
     }
   </style>
+
 </head>
-<body style="text-align:center;">
-  <h1>What is the color</h1>
-  <ul>
-    <li><h2>red</h2><h2>yellow</h2><h2>blue</h2><h2>green</h2><h2>white</h2></li>
-  </ul>
-  <h2>Rotate and check say the both, quess red and yellow</h2>
+
+<body>
+
+  <div class="container">
+    <h2></h2>
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Resources :)" title="Type in a name">
+
+    <div class="panel-group" id="accordion">
+
+
+      <div class="panel panel-default main-panel">
+
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse0">From home </a>
+          </h4>
+        </div>
+        <div id="collapse0" class="panel-collapse collapse in">
+          <div class="panel-body">
+
+            <body>
+
+              <div class="panel-group">
+                <div class="panel-info class">
+                  <div class="panel-heading">Here we go</div>
+                  <div class="panel-body"><b>Hey! </b>
+                    <br>Download the test.pdf, Go for a try. and search for a subject above.
+                    <br>
+                    <br>
+                    <br>
+                    <div class="bun">
+                      <a href="" id="download-pdf-1" class="button dark">
+                        <ul>
+                          <li>&#68;ownload</li>
+                          <li>&#68;ownloading</li>
+                          <li>Open File</li>
+                        </ul>
+                        <div>
+                          <svg viewBox="0 0 24 24"></svg>
+                        </div>
+                      </a>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </body>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="panel panel-default main-panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Computer science </a>
+          </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+          <div class="panel-body">
+
+            <body>
+
+              <div class="panel panel-danger">
+                <div class="panel-heading"> Topics</div>
+                <div class="panel-body"><b>Scheduler Without topic Functions</b></div>
+              </div>
+
+              <div class="panel panel-warning">
+                <div class="panel-heading">Relevant</div>
+                <div class="panel-body"><b>Time management</b>
+                  <br> a secondary function in the app.
+                </div>
+              </div>
+
+              <div class="panel panel-success">
+                <div class="panel-heading">Important</div>
+                <div class="panel-body"><b>web development</b>
+                  <br>html, js, react dom, bootstrap.
+                </div>
+              </div>
+
+              <div class="panel panel-info">
+                <div class="panel-heading">Single Topic</div>
+                <div class="panel-body"><b>Google, Apple</b>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="panel panel-default main-panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"> chemistry</a>
+          </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+          <div class="panel-body">
+
+            <div class="panel panel-success">
+              <div class="panel-heading">Files</div>
+              <div class="panel-body"><b>Don't bother , Some random words. </b></div>
+            </div>
+
+            <div class="panel panel-info">
+              <div class="panel-heading">How to improve </div>
+              <div class="panel-body"><b>How to improve the qualities </b></div>
+            </div>
+
+            <div class="panel panel-warning">
+              <div class="panel-heading">Important!</div>
+              <div class="panel-body"><b> bye. </b></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="panel panel-default main-panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">English</a>
+          </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+          <div class="panel-body">
+
+            <body>
+
+            <div class="panel panel-success">
+              <div class="panel-heading">Files</div>
+              <div class="panel-body"><b>Don't bother , Some random words. </b></div>
+            </div>
+
+            <div class="panel panel-info">
+              <div class="panel-heading">How to improve </div>
+              <div class="panel-body"><b>How to improve the qualities </b></div>
+            </div>
+
+            <div class="panel panel-warning">
+              <div class="panel-heading">Important!</div>
+              <div class="panel-body"><b> bye. </b></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default main-panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Maths</a>
+          </h4>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse">
+          <div class="panel-body">
+
+            <body>
+
+              <div class="panel panel-warning class">
+                <div class="panel-heading">Relevant</div>
+                <div class="panel-body">Includes games that require any sort of battle/combat, quick hand-eye coordination, or fast paced gameplay.
+                  <br>
+                  <br>Click <a href="https://sites.google.com/corp/google.com/newgenrefaq/action-game" target="_blank">here</a> for more information.
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default main-panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Physics</a>
+          </h4>
+        </div>
+        <div id="collapse5" class="panel-collapse collapse">
+          <div class="panel-body">
+
+            <body>
+
+              <div class="panel panel-warning">
+                <div class="panel-heading">Relevant</div>
+                <div class="panel-body">Can be Relevant even if the game is only Action or only Adventure.</div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default main-panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">Arabic</a>
+          </h4>
+        </div>
+        <div id="collapse6" class="panel-collapse collapse">
+          <div class="panel-body">
+
+            <div class="panel panel-danger class">
+              <div class="panel-heading">Off Topic</div>
+              <div class="panel-body"><b>Game Apps</b>
+                <br>No relation to the game itself.
+              </div>
+            </div>
+
+            <div class="panel panel-warning class">
+              <div class="panel-heading">Relevant</div>
+              <div class="panel-body">Drug addiction or mental care apps may be relevant only if the description mentions addiction.</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="panel panel-default main-panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">Malayalam</a>
+          </h4>
+        </div>
+        <div id="collapse7" class="panel-collapse collapse">
+          <div class="panel-body">
+
+            <div class="panel panel-warning">
+              <div class="panel-heading">Relevant</div>
+              <div class="panel-body"><b>Apps For Adults</b>
+                <br>If the description specifically states that the app is made for adults, it should be Relevant.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default main-panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">English</a>
+          </h4>
+        </div>
+        <div id="collapse8" class="panel-collapse collapse">
+          <div class="panel-body">
+
+            <div class="panel panel-danger class">
+              <div class="panel-heading">Off Topic</div>
+              <div class="panel-body">AAC acronyms that are not related to the audio format.
+              </div>
+            </div>
+
+            <div class="panel panel-warning">
+              <div class="panel-heading">Relevant</div>
+              <div class="panel-body"><b>AAC Audio Format</b></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+  <div>
+    <pre>         Functional  </pre> powered by ____.
+    <pre>     End </pre>
+  </div>
+
+  <script>
+    function myFunction() {
+      var input, filter, panels, a, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      panels = document.getElementsByClassName("main-panel");
+      for (i = 0; i < panels.length; i++) {
+        a = panels[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          panels[i].style.display = "";
+        } else {
+          panels[i].style.display = "none";
+        }
+      }
+    }
+
+    var downloadPDF1 = document.getElementById("download-pdf-1");
+
+    downloadPDF1.addEventListener("click", function() {
+
+      //add class to show loading animation
+      downloadPDF1.classList.add("loading");
+
+      // create an a element
+      var link = document.createElement("a");
+      link.href = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/172905/test.pdf";
+      link.download = "test-1-.pdf";
+
+      link.addEventListener("loadend", function() {
+        downloadPDF1.classList.remove("loading");
+      });
+
+      link.click();
+    });
+
+    document.querySelectorAll('.button').forEach(button => {
+      let duration = 3000,
+        svg = button.querySelector('svg'),
+        svgPath = new Proxy({
+          y: null,
+          smoothing: null
+        }, {
+          set(target, key, value) {
+            target[key] = value;
+            if (target.y !== null && target.smoothing !== null) {
+              svg.innerHTML = getPath(target.y, target.smoothing, null);
+            }
+            return true;
+          },
+          get(target, key) {
+            return target[key];
+          }
+        });
+      button.style.setProperty('--duration', duration);
+      svgPath.y = 20;
+      svgPath.smoothing = 0;
+      button.addEventListener('click', e => {
+        e.preventDefault();
+        if (!button.classList.contains('loading')) {
+          button.classList.add('loading');
+          gsap.to(svgPath, {
+            smoothing: .3,
+            duration: duration * .065 / 1000
+          });
+          gsap.to(svgPath, {
+            y: 12,
+            duration: duration * .265 / 1000,
+            delay: duration * .065 / 1000,
+            ease: Elastic.easeOut.config(1.12, .4)
+          });
+          setTimeout(() => {
+            svg.innerHTML = getPath(0, 0, [
+                    [3, 14],
+                    [8, 19],
+                    [21, 6]
+                ]);
+          }, duration / 2);
+        }
+      });
+    });
+
+    function getPoint(point, i, a, smoothing) {
+      let cp = (current, previous, next, reverse) => {
+          let p = previous || current,
+            n = next || current,
+            o = {
+              length: Math.sqrt(Math.pow(n[0] - p[0], 2) + Math.pow(n[1] - p[1], 2)),
+              angle: Math.atan2(n[1] - p[1], n[0] - p[0])
+            },
+            angle = o.angle + (reverse ? Math.PI : 0),
+            length = o.length * smoothing;
+          return [current[0] + Math.cos(angle) * length, current[1] + Math.sin(angle) * length];
+        },
+        cps = cp(a[i - 1], a[i - 2], point, false),
+        cpe = cp(point, a[i - 1], a[i + 1], true);
+      return `C ${cps[0]},${cps[1]} ${cpe[0]},${cpe[1]} ${point[0]},${point[1]}`;
+    }
+
+    function getPath(update, smoothing, pointsNew) {
+      let points = pointsNew ? pointsNew : [
+            [4, 12],
+            [12, update],
+            [20, 12]
+        ],
+        d = points.reduce((acc, point, i, a) => i === 0 ? `M ${point[0]},${point[1]}` : `${acc} ${getPoint(point, i, a, smoothing)}`, '');
+      return `<path d="${d}" />`;
+    }
+  </script>
+  <!-- partial -->
+
 </body>
+
 </html>
