@@ -2,849 +2,816 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Study Materials</title>
-</head>
-
-<head>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Near </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" />
 
   <style>
-    * {
-      box-sizing: border-box;
+    body {
+      background-color: rgb(10, 10, 10);
+      height: 100vh;
+      padding: 0px;
+      margin: 0px;
+      overflow: scroll;
+      overflow-x: scroll;
+      scroll-behavior: smooth;
     }
 
-    #myInput {
-      background-image: url('/css/searchicon.png');
-      background-position: 10px 12px;
-      background-repeat: no-repeat;
+    /* .centered-div {
+  background-color: #000000;
+  max-width: 978px;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+} */
+
+    /*
+#gallery {
+  height: 240vh;
+  width:240vw ;
+  position: absolute;
+}
+
+*/
+
+    #gallery {
+      min-height: 1000px;
+      width: 2400px;
+      /* width: 1400px; */
+      position: absolute;
+    }
+
+    .tile {
+      position: absolute;
+      border-radius: 1vmax;
+      transition: transform 800ms ease;
+      color: #000;
+    }
+
+    .tile:hover {
+      transform: scale(1.1);
+    }
+
+    .tile:hover>img {
+      opacity: 1;
+      transform: scale(1.01);
+    }
+
+    .tile>img {
+      height: 100%;
       width: 100%;
-      font-size: 16px;
-      padding: 12px 20px 12px 40px;
-      border: 1px solid #ddd;
-      margin-bottom: 12px;
+      object-fit: cover;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 800ms ease, transform 800ms ease;
     }
 
-    #myUL {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
+    .tile:nth-child(1) {
+      background-color: rgb(255, 238, 88);
+      height: 150px;
+      width: 148px;
+      /* height: 42vw;
+  width: 40vw; */
+      left: 200px;
+      top: 120px;
     }
 
-    #myUL li a {
-      border: none;
-      margin-top: 1px;
-      /* Prevent double borders */
-      background-color: none;
-      padding: none;
-      text-decoration: none;
-      font-size: 15px;
-      color: black;
-      display: block
+    .tile:nth-child(2) {
+      background-color: rgb(66, 165, 245);
+      /* height: 44vw;
+  width: 42vw; */
+      height: 150px;
+      width: 148px;
+      left: 46%;
+      top: 12%;
     }
 
-    #myUL li a:hover:not(.header) {
-      background-color: none;
-    }
-  </style>
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-  <style>
-    .panel-title {
-      color: #FFFFFF;
+    .tile:nth-child(3) {
+      background-color: rgb(239, 83, 80);
+      height: 130px;
+      width: 128px;
+      /* height: 38vw;
+  width: 36vw; */
+      left: 12%;
+      top: 34%;
     }
 
-    .panel-body {
-      color: #000000;
+    .tile:nth-child(4) {
+      background-color: rgb(102, 187, 106);
+      /* height: 34vw;
+  width: 32vw; */
+      height: 150px;
+      width: 148px;
+      left: 45%;
+      top: 48%;
     }
 
-    .panel-default>.panel-heading {
-      color: #333;
-      border-radius: 4px;
-      background-color: #D7BE69;
+    .tile:nth-child(5) {
+      background-color: rgb(171, 71, 188);
+      /* height: 54vw;
+  width: 52vw; */
+      height: 150px;
+      width: 148px;
+      left: 8%;
+      top: 70%;
     }
 
-    .panel-group .panel-heading+.panel-collapse>.list-group,
-    .panel-group .panel-heading+.panel-collapse>.panel-body {
-      border-top: 0px solid #261616;
+    .tile:nth-child(6) {
+      background-color: rgb(255, 167, 38);
+      /* height: 48vw;
+  width: 44vw; */
+      height: 150px;
+      width: 148px;
+      left: 68%;
+      top: 8%;
     }
 
-
-    .panel-warning {
-      margin-bottom: 20px;
-      border-top: 0;
-      border: 1px solid #FFE1AC00;
-      border-radius: 4px;
-
-    }
-
-    .panel-success>.panel-heading {
-      color: #24FF28;
-      background-color: #DFF0D800;
-      margin-bottom: 20px;
-      border: 1px solid #26FF2A;
-      border-radius: 4px;
-
-    }
-
-    .panel-danger>.panel-heading {
-      color: #E22B29;
-      background-color: #F2DEDE00;
-      margin-bottom: 20px;
-      border-radius: 4px;
-
-    }
-
-
-    .panel-warning>.panel-heading {
-      color: #FFBF4E;
-      background-color: #FEDD9900;
-      margin-bottom: 20px;
-      border: 1px solid #FFC55F;
-      border-radius: 4px;
-
-    }
-
-    .panel-info>.panel-heading {
-      color: #15B2FF;
-      background-color: #D9EDF700;
-      margin-bottom: 20px;
-      border: 1px solid #10B0FF;
-      border-radius: 4px;
-
-    }
-
-
-
-
-
-
-    a,
-    a:hover,
-    a:active,
-    a:visited,
-    a:focus {
-      text-decoration: none;
-    }
-  </style>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-    .button.dark-single {
-      --background: none;
-      --rectangle: #242836;
-      --success: #4BC793;
-    }
-
-    .button.white-single {
-      --background: none;
-      --rectangle: #F5F9FF;
-      --arrow: #275efe;
-      --success: #275efe;
-      --shadow: rgba(10, 22, 50, 0.1);
-    }
-
-    .button.dark {
-      --background: #242836BD;
-      --rectangle: #1C212E;
-      --arrow: #F5F9FF;
-      --text: #F5F9FF;
-      --success: #D7BE69A6;
-    }
-
-    .button {
-      --background: #275EFE;
-      --rectangle: #184FEE;
-      --success: #4672F1;
-      --text: #fff;
-      --arrow: #fff;
-      --checkmark: #fff;
-      --shadow: rgba(10, 22, 50, 0.24);
-
-      display: flex;
-      overflow: hidden;
-      text-decoration: none;
-      -webkit-mask-image: -webkit-radial-gradient(white, black);
-      background: var(--background);
-      border-radius: 8px;
-      box-shadow: 0 2px 8px -1px var(--shadow);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .button:active {
-      transform: scale(0.95);
-      box-shadow: 0 1px 4px -1px var(--shadow);
-    }
-
-    .button ul {
-      margin: 0;
-      padding: 16px 40px;
-      list-style: none;
-      text-align: center;
-      position: relative;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 28px;
-      color: var(--text);
-    }
-
-    .button ul li:not(:first-child) {
-      top: 16px;
-      left: 0;
-      right: 0;
-      position: absolute;
-    }
-
-    .button ul li:nth-child(2) {
-      top: 76px;
-    }
-
-    .button ul li:nth-child(3) {
-      top: 136px;
-    }
-
-    .button>div {
-      position: relative;
-      width: 60px;
-      height: 60px;
-      background: var(--rectangle);
-    }
-
-    .button>div:before,
-    .button>div:after {
-      content: "";
-      display: block;
-      position: absolute;
-    }
-
-    .button>div:before {
-      border-radius: 1px;
-      width: 2px;
-      top: 50%;
+    .tile:nth-child(7) {
+      background-color: rgb(63, 81, 181);
+      /* height: 36vw;
+  width: 34vw; */
+      height: 150px;
+      width: 148px;
       left: 50%;
-      height: 17px;
-      margin: -9px 0 0 -1px;
-      background: var(--arrow);
+      top: 74%;
     }
 
-    .button>div:after {
-      width: 60px;
-      height: 60px;
-      transform-origin: 50% 0;
-      border-radius: 0 0 80% 80%;
-      background: var(--success);
-      top: 0;
-      left: 0;
-      transform: scaleY(0);
+    .tile:nth-child(8) {
+      background-color: rgb(141, 110, 99);
+      /* height: 54vw;
+  width: 52vw; */
+      height: 150px;
+      width: 148px;
+      left: 72%;
+      top: 42%;
     }
 
-    .button>div svg {
-      display: block;
-      position: absolute;
-      width: 20px;
-      height: 20px;
+    .tile:nth-child(9) {
+      background-color: rgb(250, 250, 250);
+      /* height: 30vw;
+  width: 28vw; */
+      height: 150px;
+      width: 148px;
+      left: 2200px;
+      top: 76%;
+    }
+
+    .tile:nth-child(10) {
+      background-color: rgb(171, 71, 188);
+      /* height: 42vw;
+  width: 40vw; */
+      height: 150px;
+      width: 148px;
+      left: 400px;
+      top: 690px;
+    }
+
+    .tile:nth-child(11) {
+      background-color: rgb(171, 71, 188);
+      /* height: 42vw;
+  width: 40vw; */
+      height: 150px;
+      width: 148px;
+      left: 300px;
+      top: 490px;
+    }
+
+    .tile:nth-child(12) {
+      background-color: rgb(171, 71, 188);
+      /* height: 42vw;
+  width: 40vw; */
+      height: 150px;
+      width: 148px;
+      left: 930px;
+      top: 280px;
+    }
+
+    .tile:nth-child(13) {
+      background-color: rgb(141, 110, 99);
+      /* height: 54vw;
+  width: 52vw; */
+      height: 150px;
+      width: 148px;
+      left: 780px;
+      top: 80px;
+    }
+
+    .tile:nth-child(14) {
+      background-color: rgb(63, 81, 181);
+      /* height: 36vw;
+  width: 34vw; */
+      height: 150px;
+      width: 148px;
+      left: 600px;
+      top: 870px;
+    }
+
+    .tile:nth-child(15) {
+      background-color: rgb(102, 187, 106);
+      /* height: 34vw;
+  width: 32vw; */
+      height: 150px;
+      width: 148px;
+      left: 730px;
+      top: 250px;
+    }
+
+    .tile:nth-child(16) {
+      background-color: rgb(239, 83, 80);
+      /* height: 38vw;
+  width: 36vw; */
+      height: 150px;
+      width: 148px;
+      left: 700px;
+      top: 680px;
+    }
+
+    .tile:nth-child(17) {
+      background-color: rgb(171, 71, 188);
+      /* height: 42vw;
+  width: 40vw; */
+      height: 150px;
+      width: 148px;
+      left: 800px;
+      top: 490px;
+    }
+
+    .tile:nth-child(18) {
+      background-color: rgb(141, 110, 99);
+      /* height: 54vw;
+  width: 52vw; */
+      height: 150px;
+      width: 148px;
+      left: 959px;
+      top: 490px;
+    }
+
+    .tile:nth-child(19) {
+      background-color: rgb(15, 32, 47);
+      /* height: 30vw;
+  width: 28vw; */
+      height: 150px;
+      width: 148px;
+      left: 860px;
+      top: 760px;
+    }
+
+    .tile:nth-child(20) {
+      background-color: rgb(255, 167, 38);
+      /* height: 48vw;
+  width: 44vw; */
+      height: 150px;
+      width: 148px;
+      left: 1100px;
+      top: 760px;
+    }
+
+    .tile:nth-child(21) {
+      background-color: rgb(255, 238, 88);
+      height: 150px;
+      width: 148px;
+      /* height: 42vw;
+  width: 40vw; */
+      left: 1500px;
+      top: 120px;
+    }
+
+    .tile:nth-child(22) {
+      background-color: rgb(66, 165, 245);
+      /* height: 44vw;
+  width: 42vw; */
+      height: 150px;
+      width: 148px;
+      left: 1500px;
+      top: 120px;
+    }
+
+    .tile:nth-child(23) {
+      background-color: rgb(239, 83, 80);
+      height: 130px;
+      width: 128px;
+      /* height: 38vw;
+  width: 36vw; */
+      left: 12%;
+      top: 34%;
+    }
+
+    .tile:nth-child(24) {
+      background-color: rgb(102, 187, 106);
+      /* height: 34vw;
+  width: 32vw; */
+      height: 150px;
+      width: 148px;
+      left: 45%;
+      top: 48%;
+    }
+
+    .tile:nth-child(25) {
+      background-color: rgb(171, 71, 188);
+      /* height: 54vw;
+  width: 52vw; */
+      height: 150px;
+      width: 148px;
+      left: 8%;
+      top: 70%;
+    }
+
+    .tile:nth-child(26) {
+      background-color: rgb(255, 167, 38);
+      /* height: 48vw;
+  width: 44vw; */
+      height: 150px;
+      width: 148px;
+      left: 68%;
+      top: 8%;
+    }
+
+    .tile:nth-child(27) {
+      background-color: rgb(63, 81, 181);
+      /* height: 36vw;
+  width: 34vw; */
+      height: 150px;
+      width: 148px;
       left: 50%;
-      top: 50%;
-      margin: -9px 0 0 -10px;
-      fill: none;
-      z-index: 1;
-      stroke-width: 2px;
-      stroke: var(--arrow);
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      top: 74%;
     }
 
-    .button.loading ul {
-      -webkit-animation: text calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
-      animation: text calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
+    .tile:nth-child(28) {
+      background-color: rgb(141, 110, 99);
+      /* height: 54vw;
+  width: 52vw; */
+      height: 150px;
+      width: 148px;
+      left: 72%;
+      top: 42%;
     }
 
-    .button.loading>div:before {
-      -webkit-animation: line calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
-      animation: line calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
+    .tile:nth-child(29) {
+      background-color: rgb(250, 250, 250);
+      /* height: 30vw;
+  width: 28vw; */
+      height: 150px;
+      width: 148px;
+      left: 84%;
+      top: 84%;
     }
 
-    .button.loading>div:after {
-      -webkit-animation: background calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
-      animation: background calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
+    .tile:nth-child(30) {
+      background-color: rgb(171, 71, 188);
+      /* height: 42vw;
+  width: 40vw; */
+      height: 150px;
+      width: 148px;
+      left: 140px;
+      top: 490px;
     }
 
-    .button.loading>div svg {
-      -webkit-animation: svg calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
-      animation: svg calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * .065ms);
+    .tile:nth-child(31) {
+      background-color: rgb(171, 71, 188);
+      /* height: 42vw;
+  width: 40vw; */
+      height: 150px;
+      width: 148px;
+      left: 500px;
+      top: 430px;
     }
 
-    @-webkit-keyframes text {
-
-      10%,
-      85% {
-        transform: translateY(-100%);
-      }
-
-      95%,
-      100% {
-        transform: translateY(-200%);
-      }
+    .tile:nth-child(32) {
+      background-color: rgb(171, 71, 188);
+      /* height: 42vw;
+  width: 40vw; */
+      height: 150px;
+      width: 148px;
+      left: 530px;
+      top: 260px;
     }
 
-    @keyframes text {
-
-      10%,
-      85% {
-        transform: translateY(-100%);
-      }
-
-      95%,
-      100% {
-        transform: translateY(-200%);
-      }
+    .tile:nth-child(33) {
+      background-color: rgb(141, 110, 99);
+      /* height: 54vw;
+  width: 52vw; */
+      height: 150px;
+      width: 148px;
+      left: 600px;
+      top: 80px;
     }
 
-    @keyframes line {
-
-      100%,
-      0% {
-        opacity: 0;
-        transform: translateY(0px);
-      }
-
-      5%,
-      20% {
-        stroke-dasharray: 0;
-        stroke-dashoffset: 0;
-        opacity: 1;
-        stroke-width: 3px;
-        stroke: var(--checkmark);
-      }
-
-      30% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      75% {
-        opacity: 0;
-        transform: translateY(0px);
-      }
+    .tile:nth-child(34) {
+      background-color: rgb(63, 81, 181);
+      /* height: 36vw;
+  width: 34vw; */
+      height: 150px;
+      width: 148px;
+      left: 630px;
+      top: 450px;
     }
 
-    @keyframes svg {
-
-      0%,
-      20% {
-        stroke-dasharray: 0;
-        stroke-dashoffset: 0;
-      }
-
-
-
-      30% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      75% {
-        opacity: 0;
-        transform: translateY(0px);
-      }
-
-      89% {
-        stroke-dasharray: 26px;
-        stroke-dashoffset: 26px;
-        stroke-width: 3px;
-        margin: -10px 0 0 -10px;
-        stroke: var(--checkmark);
-      }
-
-      100% {
-        stroke-dasharray: 26px;
-        stroke-dashoffset: 0;
-        margin: -10px 0 0 -10px;
-        stroke: var(--checkmark);
-      }
-
-      100%,
-      0% {
-        opacity: 1;
-        transform: translateY(0px);
-      }
-
+    .tile:nth-child(35) {
+      background-color: rgb(102, 187, 106);
+      /* height: 34vw;
+  width: 32vw; */
+      height: 150px;
+      width: 148px;
+      left: 730px;
+      top: 250px;
     }
 
-    @-webkit-keyframes background {
-      10% {
-        transform: scaleY(0);
-      }
-
-      40% {
-        transform: scaleY(0.15);
-      }
-
-      65% {
-        transform: scaleY(0.5);
-        border-radius: 0 0 50% 50%;
-      }
-
-      75% {
-        border-radius: 0 0 50% 50%;
-      }
-
-      90%,
-      100% {
-        border-radius: 0;
-      }
-
-      75%,
-      100% {
-        transform: scaleY(1);
-      }
+    .tile:nth-child(36) {
+      background-color: rgb(239, 83, 80);
+      /* height: 38vw;
+  width: 36vw; */
+      height: 150px;
+      width: 148px;
+      left: 700px;
+      top: 680px;
     }
 
-    @keyframes background {
-      10% {
-        transform: scaleY(0);
-      }
-
-      40% {
-        transform: scaleY(0.15);
-      }
-
-      65% {
-        transform: scaleY(0.5);
-        border-radius: 0 0 50% 50%;
-      }
-
-      75% {
-        border-radius: 0 0 50% 50%;
-      }
-
-      90%,
-      100% {
-        border-radius: 0;
-      }
-
-      75%,
-      100% {
-        transform: scaleY(1);
-      }
+    .tile:nth-child(37) {
+      background-color: #F6C1FF;
+      /* height: 42vw;
+  width: 40vw; */
+      height: 150px;
+      width: 148px;
+      left: 800px;
+      top: 450px;
     }
 
-
-
-    .bun {
-      font-family: "Roboto", Arial;
+    .tile:nth-child(38) {
+      background-color: rgb(141, 110, 99);
+      /* height: 54vw;
+  width: 52vw; */
+      height: 150px;
+      width: 148px;
+      left: 980px;
+      top: 120px;
     }
 
-    .bun {
-      display: flex;
+    .tile:nth-child(39) {
+      background-color: rgb(250, 250, 250);
+      /* height: 30vw;
+  width: 28vw; */
+      height: 150px;
+      width: 148px;
+      left: 840px;
+      top: 560px;
+    }
+
+    .tile:nth-child(40) {
+      background-color: rgb(255, 167, 38);
+      /* height: 48vw;
+  width: 44vw; */
+      height: 150px;
+      width: 148px;
+      left: 1450px;
+      top: 760px;
+    }
+
+    .num {
+      color: #000;
+      display: grid;
+      /*  background-color: #B1F4FF; */
+      border-radius: 1vmax;
+      transition: transform 800ms ease;
+      place-items: center;
       width: 100%;
+      height: 100%;
+      position: absolute;
     }
 
-    body .container .button {
-      margin: 16px;
-    }
-
-    @media (max-width: 400px) {
-      body .container .button {
-        margin: 12px;
-      }
+    h2 {
+      line-height: 0;
+      font-size: 400%;
     }
   </style>
+
 
 </head>
 
 <body>
+  <!-- partial:index.partial.html -->
 
-  <div class="container">
-    <h2></h2>
-
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Resources :)" title="Type in a name">
-
-    <div class="panel-group" id="accordion">
-
-
-      <div class="panel panel-default main-panel">
-
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" href="#collapse0">From home </a>
-          </h4>
+  <div class="centered-div">
+    <div id="gallery">
+      <div class="tile">
+        <div class="num">
+          <h2>1</h2>
         </div>
-        <div id="collapse0" class="panel-collapse collapse in">
-          <div class="panel-body">
+        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJhbmRvbSUyMG9iamVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
 
-            <body>
-
-              <div class="panel-group">
-                <div class="panel-info class">
-                  <div class="panel-heading">Resources</div>
-                  <div class="panel-body"><b>Hey! </b>
-                    <br>Download the test.pdf. and search for a subject above.
-                    <br>
-                    <br>
-                    <br>
-                    <div class="bun">
-                      <a href="" id="download-pdf-1" class="button dark">
-                        <ul>
-                          <li>&#68;ownload</li>
-                          <li>&#68;ownloading</li>
-                          <li>Open File</li>
-                        </ul>
-                        <div>
-                          <svg viewBox="0 0 24 24"></svg>
-                        </div>
-                      </a>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </body>
-
-          </div>
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>2</h2>
         </div>
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>3</h2>
+        </div>
+        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJhbmRvbSUyMG9iamVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
+
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>4</h2>
+        </div>
+        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJhbmRvbSUyMG9iamVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
+
       </div>
 
-
-      <div class="panel panel-default main-panel">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Computer science </a>
-          </h4>
+      <div class="tile">
+        <div class="num">
+          <h2>5</h2>
         </div>
-        <div id="collapse1" class="panel-collapse collapse">
-          <div class="panel-body">
 
-            <body>
-
-              <div class="panel panel-danger">
-                <div class="panel-heading"> Topics</div>
-                <div class="panel-body"><b>Scheduler Without topic Functions</b></div>
-              </div>
-
-              <div class="panel panel-warning">
-                <div class="panel-heading">Relevant</div>
-                <div class="panel-body"><b>Time management</b>
-                  <br> a secondary function in the app.
-                </div>
-              </div>
-
-              <div class="panel panel-success">
-                <div class="panel-heading">Important</div>
-                <div class="panel-body"><b>web development</b>
-                  <br>html, js, react dom, bootstrap.
-                </div>
-              </div>
-
-              <div class="panel panel-info">
-                <div class="panel-heading">Single Topic</div>
-                <div class="panel-body"><b>Google, Apple</b>
-                </div>
-              </div>
-
-          </div>
-        </div>
+        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJhbmRvbSUyMG9iamVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
       </div>
 
-
-      <div class="panel panel-default main-panel">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"> chemistry</a>
-          </h4>
+      <div class="tile">
+        <div class="num">
+          <h2>6</h2>
         </div>
-        <div id="collapse2" class="panel-collapse collapse">
-          <div class="panel-body">
 
-            <div class="panel panel-success">
-              <div class="panel-heading">Files</div>
-              <div class="panel-body"><b>Don't bother , Some random words. </b></div>
-            </div>
-
-            <div class="panel panel-info">
-              <div class="panel-heading">How to improve </div>
-              <div class="panel-body"><b>How to improve the qualities </b></div>
-            </div>
-
-            <div class="panel panel-warning">
-              <div class="panel-heading">Important!</div>
-              <div class="panel-body"><b> bye. </b></div>
-            </div>
-
-          </div>
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>7</h2>
         </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>8</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>9</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>10</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
       </div>
 
-
-      <div class="panel panel-default main-panel">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">English</a>
-          </h4>
+      <div class="tile">
+        <div class="num">
+          <h2>11</h2>
         </div>
-        <div id="collapse3" class="panel-collapse collapse">
-          <div class="panel-body">
 
-            <body>
-
-            <div class="panel panel-success">
-              <div class="panel-heading">Files</div>
-              <div class="panel-body"><b>Don't bother , Some random words. </b></div>
-            </div>
-
-            <div class="panel panel-info">
-              <div class="panel-heading">How to improve </div>
-              <div class="panel-body"><b>How to improve the qualities </b></div>
-            </div>
-
-            <div class="panel panel-warning">
-              <div class="panel-heading">Important!</div>
-              <div class="panel-body"><b> bye. </b></div>
-            </div>
-
-          </div>
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>12</h2>
         </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>13</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>14</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJhbmRvbSUyMG9iamVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>15</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJhbmRvbSUyMG9iamVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
       </div>
 
-      <div class="panel panel-default main-panel">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Maths</a>
-          </h4>
+      <div class="tile">
+        <div class="num">
+          <h2>16</h2>
         </div>
-        <div id="collapse4" class="panel-collapse collapse">
-          <div class="panel-body">
 
-            <body>
-
-              <div class="panel panel-warning class">
-                <div class="panel-heading">Relevant</div>
-                <div class="panel-body">Includes games that require any sort of battle/combat, quick hand-eye coordination, or fast paced gameplay.
-                  <br>
-                  <br>Click <a href="https://sites.google.com/corp/google.com/newgenrefaq/action-game" target="_blank">here</a> for more information.
-                </div>
-              </div>
-
-          </div>
+        <img src="https://images.unsplash.com/photo-1520121401995-928cd50d4e27?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Z3JlZW58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>17</h2>
         </div>
+
+        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJhbmRvbSUyMG9iamVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>18</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>19</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>20</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
       </div>
 
-      <div class="panel panel-default main-panel">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Physics</a>
-          </h4>
+      <div class="tile">
+        <div class="num">
+          <h2>21</h2>
         </div>
-        <div id="collapse5" class="panel-collapse collapse">
-          <div class="panel-body">
-
-            <body>
-
-              <div class="panel panel-warning">
-                <div class="panel-heading">Relevant</div>
-                <div class="panel-body">Can be Relevant even if the game is only Action or only Adventure.</div>
-              </div>
-
-          </div>
+        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJhbmRvbSUyMG9iamVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>22</h2>
         </div>
+
+        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJhbmRvbSUyMG9iamVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>23</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJhbmRvbSUyMG9iamVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>24</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1520121401995-928cd50d4e27?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Z3JlZW58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
       </div>
 
-      <div class="panel panel-default main-panel">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">Arabic</a>
-          </h4>
+      <div class="tile">
+        <div class="num">
+          <h2>25</h2>
         </div>
-        <div id="collapse6" class="panel-collapse collapse">
-          <div class="panel-body">
 
-            <div class="panel panel-danger class">
-              <div class="panel-heading">Off Topic</div>
-              <div class="panel-body"><b>Game Apps</b>
-                <br>No relation to the game itself.
-              </div>
-            </div>
-
-            <div class="panel panel-warning class">
-              <div class="panel-heading">Relevant</div>
-              <div class="panel-body">Drug addiction or mental care apps may be relevant only if the description mentions addiction.</div>
-            </div>
-
-          </div>
-        </div>
+        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJhbmRvbSUyMG9iamVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
       </div>
 
-
-      <div class="panel panel-default main-panel">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">Malayalam</a>
-          </h4>
+      <div class="tile">
+        <div class="num">
+          <h2>26</h2>
         </div>
-        <div id="collapse7" class="panel-collapse collapse">
-          <div class="panel-body">
 
-            <div class="panel panel-warning">
-              <div class="panel-heading">Relevant</div>
-              <div class="panel-body"><b>Apps For Adults</b>
-                <br>If the description specifically states that the app is made for adults, it should be Relevant.
-              </div>
-            </div>
-
-          </div>
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>27</h2>
         </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>28</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>29</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>30</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
       </div>
 
-      <div class="panel panel-default main-panel">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">English</a>
-          </h4>
+      <div class="tile">
+        <div class="num">
+          <h2>31</h2>
         </div>
-        <div id="collapse8" class="panel-collapse collapse">
-          <div class="panel-body">
 
-            <div class="panel panel-danger class">
-              <div class="panel-heading">Off Topic</div>
-              <div class="panel-body">AAC acronyms that are not related to the audio format.
-              </div>
-            </div>
-
-            <div class="panel panel-warning">
-              <div class="panel-heading">Relevant</div>
-              <div class="panel-body"><b>AAC Audio Format</b></div>
-            </div>
-
-          </div>
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>32</h2>
         </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>33</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>34</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJhbmRvbSUyMG9iamVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>35</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJhbmRvbSUyMG9iamVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
       </div>
 
+      <div class="tile">
+        <div class="num">
+          <h2>36</h2>
+        </div>
 
+        <img src="https://images.unsplash.com/photo-1520121401995-928cd50d4e27?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Z3JlZW58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>37</h2>
+        </div>
 
+        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJhbmRvbSUyMG9iamVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>38</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>39</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
+      <div class="tile">
+        <div class="num">
+          <h2>40</h2>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=70" />
+      </div>
     </div>
   </div>
-  <div>
-    <pre>         Functional  </pre> powered by ____.
-    <pre>     End </pre>
-  </div>
 
+  <!-- partial -->
+  <script src="https://kit.fontawesome.com/944eb371a4.js"></script>
   <script>
-    function myFunction() {
-      var input, filter, panels, a, i;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      panels = document.getElementsByClassName("main-panel");
-      for (i = 0; i < panels.length; i++) {
-        a = panels[i].getElementsByTagName("a")[0];
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-          panels[i].style.display = "";
-        } else {
-          panels[i].style.display = "none";
-        }
-      }
-    }
+    const gallery = document.getElementById("gallery");
 
-    var downloadPDF1 = document.getElementById("download-pdf-1");
+    window.onmousemove = e => {
+      const mouseX = e.clientX,
+        mouseY = e.clientY;
 
-    downloadPDF1.addEventListener("click", function() {
+      const xDecimal = mouseX / window.innerWidth,
+        yDecimal = mouseY / window.innerHeight;
 
-      //add class to show loading animation
-      downloadPDF1.classList.add("loading");
+      const maxX = gallery.offsetWidth - window.innerWidth,
+        maxY = gallery.offsetHeight - window.innerHeight;
 
-      // create an a element
-      var link = document.createElement("a");
-      link.href = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/172905/test.pdf";
-      link.download = "test-1-.pdf";
+      const panX = maxX * xDecimal * -1 * 1 / 4,
+        panY = maxY * yDecimal * -1;
 
-      link.addEventListener("loadend", function() {
-        downloadPDF1.classList.remove("loading");
-      });
-
-      link.click();
-    });
-
-    document.querySelectorAll('.button').forEach(button => {
-      let duration = 3000,
-        svg = button.querySelector('svg'),
-        svgPath = new Proxy({
-          y: null,
-          smoothing: null
-        }, {
-          set(target, key, value) {
-            target[key] = value;
-            if (target.y !== null && target.smoothing !== null) {
-              svg.innerHTML = getPath(target.y, target.smoothing, null);
-            }
-            return true;
-          },
-          get(target, key) {
-            return target[key];
-          }
-        });
-      button.style.setProperty('--duration', duration);
-      svgPath.y = 20;
-      svgPath.smoothing = 0;
-      button.addEventListener('click', e => {
-        e.preventDefault();
-        if (!button.classList.contains('loading')) {
-          button.classList.add('loading');
-          gsap.to(svgPath, {
-            smoothing: .3,
-            duration: duration * .065 / 1000
-          });
-          gsap.to(svgPath, {
-            y: 12,
-            duration: duration * .265 / 1000,
-            delay: duration * .065 / 1000,
-            ease: Elastic.easeOut.config(1.12, .4)
-          });
-          setTimeout(() => {
-            svg.innerHTML = getPath(0, 0, [
-                    [3, 14],
-                    [8, 19],
-                    [21, 6]
-                ]);
-          }, duration / 2);
-        }
-      });
-    });
-
-    function getPoint(point, i, a, smoothing) {
-      let cp = (current, previous, next, reverse) => {
-          let p = previous || current,
-            n = next || current,
-            o = {
-              length: Math.sqrt(Math.pow(n[0] - p[0], 2) + Math.pow(n[1] - p[1], 2)),
-              angle: Math.atan2(n[1] - p[1], n[0] - p[0])
-            },
-            angle = o.angle + (reverse ? Math.PI : 0),
-            length = o.length * smoothing;
-          return [current[0] + Math.cos(angle) * length, current[1] + Math.sin(angle) * length];
-        },
-        cps = cp(a[i - 1], a[i - 2], point, false),
-        cpe = cp(point, a[i - 1], a[i + 1], true);
-      return `C ${cps[0]},${cps[1]} ${cpe[0]},${cpe[1]} ${point[0]},${point[1]}`;
-    }
-
-    function getPath(update, smoothing, pointsNew) {
-      let points = pointsNew ? pointsNew : [
-            [4, 12],
-            [12, update],
-            [20, 12]
-        ],
-        d = points.reduce((acc, point, i, a) => i === 0 ? `M ${point[0]},${point[1]}` : `${acc} ${getPoint(point, i, a, smoothing)}`, '');
-      return `<path d="${d}" />`;
+      gallery.animate({
+        transform: `translate(${panX}px, ${panY}px)`
+      }, {
+        duration: 4000,
+        fill: "forwards",
+        easing: "ease"
+      })
     }
   </script>
-  <!-- partial -->
-
 </body>
 
 </html>
